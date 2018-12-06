@@ -2,3 +2,4 @@
 .zedstate
 node_modules/
 /.gtm/
+coverage/
