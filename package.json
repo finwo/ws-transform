@@ -11,7 +11,7 @@
     "url": "git+https://gitlab.com/finwo/ws-transform.git"
   },
   "author": "Robin Bron <robin@finwo.nl>",
-  "license": "MIT",
+  "license": "Ratus Unilicense 1.0",
   "bugs": {
     "url": "https://gitlab.com/finwo/ws-transform/issues"
   },
