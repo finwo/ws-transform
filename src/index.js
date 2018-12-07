@@ -4,8 +4,20 @@ module.exports = function (remote, {egress = direct, ingress = direct, convert =
   const local = Object.create(remote);
 
   // Intercept egress
+  // Buffed, in case you try to send before connected
+  let queue = [];
   local.send = async function( chunk ) {
-    return remote.send(await egress(chunk));
+    if (remote.readyState > 1) return;
+    queue.push(await egress(chunk));
+    let current = false;
+    try {
+      while(queue.length) {
+        current = queue.shift();
+        remote.send(current);
+      }
+    } catch(e) {
+      if (current) queue.unshift(current);
+    }
   };
 
   // Intercept adding events
