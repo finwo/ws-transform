@@ -1,9 +1,8 @@
-// import b64url  from 'base64url';
-import expect    from 'expect';
-import transform from './index';
+const test      = require('tape');
+const transform = require('ws-transform');
 
-expect.extend(require('jest-isa'));
+test('Ensure ws-transform is a function', t => {
+  t.plan(1);
 
-test('Ensure ws-transform is a function', () => {
-  expect(transform).isA(Function);
+  t.equal(typeof transform, 'function', 'Transform is a function');
 });

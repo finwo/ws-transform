@@ -4,7 +4,8 @@
   "description": "Transform websocket data",
   "main": "src/index.js",
   "scripts": {
-    "test": "NODE_ENV=babel jest --detectOpenHandles",
+    "test": "preview --skip-prepublishOnly && tape src/**/*.test.js",
+    "prepublishOnly": "npm test",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"ws-transform@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
   "repository": {
@@ -19,12 +20,7 @@
   "homepage": "https://github.com/finwo/ws-transform#readme",
   "dependencies": {},
   "devDependencies": {
-    "babel-jest": "^23.6.0",
-    "babel-plugin-add-module-exports": "^1.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "expect": "^23.6.0",
-    "jest": "^23.6.0",
-    "jest-isa": "0.0.4"
+    "package-preview": "^3.0.0",
+    "tape": "^5.0.1"
   }
 }
