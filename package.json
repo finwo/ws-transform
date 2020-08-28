@@ -4,7 +4,8 @@
   "description": "Transform websocket data",
   "main": "src/index.js",
   "scripts": {
-    "test": "NODE_ENV=babel jest --detectOpenHandles"
+    "test": "NODE_ENV=babel jest --detectOpenHandles",
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"ws-transform@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
   "repository": {
     "type": "git",
