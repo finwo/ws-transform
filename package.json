@@ -4,7 +4,7 @@
   "description": "Transform websocket data",
   "main": "src/index.js",
   "scripts": {
-    "test": "preview --skip-prepublishOnly && tape src/**/*.test.js",
+    "test": "node_modules/.bin/preview --skip-prepublishOnly && tape src/**/*.test.js",
     "prepublishOnly": "npm test",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"ws-transform@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
